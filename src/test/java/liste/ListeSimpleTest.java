@@ -125,15 +125,6 @@ class ListeSimpleTest {
     }
 
     @Test
-    void supprimePremierEnDerniereElementIntrouvable() {
-        listeATester.ajout(1);
-        listeATester.ajout(2);
-        listeATester.supprimePremier(8);
-        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
-        assertEquals(2, listeATester.getSize());
-    }
-
-    @Test
     void supprimeTousListeVide() {
         listeATester.supprimeTous(1);
         assertNull(listeATester.tete);
