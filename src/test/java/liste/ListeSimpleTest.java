@@ -70,7 +70,7 @@ class ListeSimpleTest {
     @Test
     void modifiePremierVide() {
         listeATester.modifiePremier(2, 4);
-        assertEquals("ListeSimple(Noeud(4))", listeATester.toString());
+        assertEquals("ListeSimple()", listeATester.toString());
         assertEquals(1, listeATester.tete.getSuivant().getElement());
     }
 
