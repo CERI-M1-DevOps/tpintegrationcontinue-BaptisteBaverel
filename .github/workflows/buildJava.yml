@@ -1,21 +1,19 @@
-name: "Java CI with Maven - Test and package"
+name: Java CI with Maven - Test and package
 on:
   pull_request:
-    types:
-      - opened
     branches:
-      - 'main'
+      - main
 jobs:
   JavaCI:
     name: JavaCI
     runs-on: ubuntu-latest
     steps:
-      - name: "Chekout in repository"
+      - name: Chekout in repository
         uses: actions/checkout@v4
-      - name: "Java Initialize"
+      - name: Java Initialize
         uses: actions/setup-java@v4
         with:
-          distribution: 'corretto'
           java-version: '21'
-      - name: "Maven run"
-        run: mvn –B package
+          distribution: 'corretto'
+      - name: Maven run
+        run: mvn -B package
