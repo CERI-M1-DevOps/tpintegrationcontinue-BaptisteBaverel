@@ -1,5 +1,5 @@
 name: Java CI with Maven - Test and package
-trigger: none
+
 on:
   pull_request:
     branches:
