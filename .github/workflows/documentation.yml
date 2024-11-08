@@ -2,21 +2,16 @@ name: Java CI with Maven - Test and package
 trigger: none
 on:
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+    type: [ merged ]
 jobs:
   JavaCI:
+    if: github.event.pull_request.merged == true
     name: JavaCI
     runs-on: ubuntu-latest
     steps:
       - name: Chekout in repository
         uses: actions/checkout@v4
-      - name: Cache SonarQube packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
       - name: Cache Maven packages
         uses: actions/cache@v1
         with:
@@ -30,6 +25,9 @@ jobs:
           distribution: 'corretto'
           cache: 'maven'
       - name: Maven run
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
+        run: mvn -B javadoc::javadoc
+      - name: Deployment
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
