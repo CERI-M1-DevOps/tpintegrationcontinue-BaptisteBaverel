@@ -12,12 +12,6 @@ jobs:
     steps:
       - name: Chekout in repository
         uses: actions/checkout@v4
-      - name: Cache Maven packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
       - name: Java Initialize
         uses: actions/setup-java@v4
         with:
@@ -25,7 +19,7 @@ jobs:
           distribution: 'corretto'
           cache: 'maven'
       - name: Maven run
-        run: mvn -B javadoc::javadoc
+        run: mvn -B javadoc:javadoc
       - name: Deployment
         uses: peaceiris/actions-gh-pages@v4
         with:
