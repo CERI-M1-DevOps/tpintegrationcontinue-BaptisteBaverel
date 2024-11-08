@@ -1,11 +1,11 @@
-name: Java CI with Maven - Test and package
+name: Generation DOc
 
 on:
   pull_request:
     branches: [ main ]
     type: [ closed ]
 jobs:
-  JavaCI:
+  GenDoc:
     if: github.event.pull_request.merged == true
     name: JavaCI
     runs-on: ubuntu-latest
@@ -30,4 +30,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./target/report/apidocs
