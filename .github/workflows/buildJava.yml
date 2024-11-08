@@ -28,7 +28,6 @@ jobs:
           java-version: '21'
           distribution: 'corretto'
           cache: 'maven'
-          cache-dependency-path: '.m2/pom.xml'
       - name: Maven run
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
