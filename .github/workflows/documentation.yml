@@ -1,9 +1,9 @@
 name: Java CI with Maven - Test and package
-trigger: none
-on:
+
+son:
   pull_request:
     branches: [ main ]
-    type: [ merged ]
+    type: [ closed ]
 jobs:
   JavaCI:
     if: github.event.pull_request.merged == true
