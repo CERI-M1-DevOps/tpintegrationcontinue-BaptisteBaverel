@@ -1,5 +1,6 @@
 name: Bonjour
-on: [] # Ce workflow se déclenche sur un push dans le dépôt
+on: [push] # Ce workflow se déclenche sur un push dans le dépôt
+trigger: none
 jobs:
   Salutations: # Nom du job : Salutations
     name: Salutations
